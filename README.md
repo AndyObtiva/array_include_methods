@@ -41,6 +41,28 @@ To activate the `ArrayIncludeMethods` Ruby Refinement for the `Array` class, add
 using ArrayIncludeMethods
 ```
 
+Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
+
+## Examples
+
+### `Array#include_all?(other_array)`
+
+```ruby
+[1, 2, 3, 4].include_all?([2, 4]) # returns true
+[1, 2, 3, 4].include_all?([2, 4, 5]) # returns false
+[1, 2, 3, 4].include_all?([]) # returns true
+[1, 2, 3, 4].include_all?(nil) # returns false
+```
+
+### `Array#include_any?(other_array)`
+
+```ruby
+[1, 2, 3, 4].include_any?([2, 4, 5]) # returns true
+[1, 2, 3, 4].include_any?([6, 7]) # returns false
+[1, 2, 3, 4].include_any?([]) # returns true
+[1, 2, 3, 4].include_any?(nil) # returns false
+```
+
 ## Contributing to array_include_methods
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
