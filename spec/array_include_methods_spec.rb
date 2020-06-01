@@ -15,8 +15,8 @@ describe 'ArrayIncludeMethods' do
   let(:array8) { [4, 2] }
   let(:array9) { [1, 2, 2, 4] }
   let(:array10) { [2, 1, 1] }
-  let(:array11) { [1, :a, :a, :b, 'bee', 'see', true, true] }
-  let(:array12) { [1, :a, 'bee', true] }
+  let(:array11) { [1, :a, :a, :b, 'bee', 'see', true, true, nil, nil] }
+  let(:array12) { [1, :a, 'bee', true, nil] }
   
   describe '#include_all?' do
     it 'returns true if current array includes all elements from another array' do

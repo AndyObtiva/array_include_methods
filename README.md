@@ -1,4 +1,4 @@
-# ArrayIncludeMethods - Ruby Refinement
+# ArrayIncludeMethods 1.0.1 - Ruby Refinement
 [![Gem Version](https://badge.fury.io/rb/array_include_methods.svg)](http://badge.fury.io/rb/array_include_methods)
 
 `Array#include_all?` & `Array#include_any?` methods missing from basic Ruby `Array` API.
@@ -10,7 +10,7 @@
 Include the following in Gemfile:
 
 ```ruby
-gem 'array_include_methods', '~> 1.0.0'
+gem 'array_include_methods', '~> 1.0.1'
 ```
 
 Run:
@@ -24,7 +24,7 @@ bundle
 Run:
 
 ```
-gem install array_include_methods -v1.0.0
+gem install array_include_methods -v1.0.1
 ```
 
 ## Usage
@@ -62,6 +62,16 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 [1, 2, 3, 4].include_any?([]) # returns true
 [1, 2, 3, 4].include_any?(nil) # returns false
 ```
+
+## Change Log
+
+### 1.0.1
+
+- Handled case of two arrays with different ordering of common elements
+
+### 1.0.0
+
+- Initial implementation of Array#include_all? & Array#include_any?
 
 ## Contributing to array_include_methods
  
