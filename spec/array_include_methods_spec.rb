@@ -18,12 +18,24 @@ describe 'ArrayIncludeMethods' do
       expect(array1.include_all?(array2)).to eq(true)
     end
 
+    it 'returns true if current array includes all elements from another array of arguments' do
+      expect(array1.include_all?(*array2)).to eq(true)
+    end
+
     it 'returns false if current array is missing one element from another array' do
       expect(array3.include_all?(array2)).to eq(false)
     end
 
+    it 'returns false if current array is missing one element from another array of arguments' do
+      expect(array3.include_all?(*array2)).to eq(false)
+    end
+
     it 'returns true if current array is non-empty and other array is empty' do
       expect(array2.include_all?(array4)).to eq(true)
+    end
+
+    it 'returns true if current array is non-empty and other array of arguments is empty' do
+      expect(array2.include_all?()).to eq(true)
     end
 
     it 'returns true if current array is empty and other array is empty' do
@@ -48,8 +60,16 @@ describe 'ArrayIncludeMethods' do
       expect(array1.include_any?(array3)).to eq(true)
     end
 
+    it 'returns true if current array includes any elements from another array of arguments' do
+      expect(array1.include_any?(*array3)).to eq(true)
+    end
+
     it 'returns false if current array is missing all elements from another array' do
       expect(array1.include_any?(array7)).to eq(false)
+    end
+
+    it 'returns false if current array is missing all elements from another array of arguments' do
+      expect(array1.include_any?(*array7)).to eq(false)
     end
 
     it 'returns true if current array is non-empty and other array is empty' do
@@ -58,6 +78,10 @@ describe 'ArrayIncludeMethods' do
 
     it 'returns true if current array is empty and other array is empty' do
       expect(array4.include_any?(array5)).to eq(true)
+    end
+
+    it 'returns true if current array is empty and other array of arguments is empty' do
+      expect(array4.include_any?()).to eq(true)
     end
 
     it 'returns true if current array is empty and other array is non-empty' do
