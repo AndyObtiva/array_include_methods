@@ -12,10 +12,27 @@ describe 'ArrayIncludeMethods' do
   let(:array5) { [] }
   let(:array6) { nil }
   let(:array7) { [7, 8] }
+  let(:array8) { [4, 2] }
+  let(:array9) { [1, 2, 2, 4] }
+  let(:array10) { [2, 1, 1] }
+  let(:array11) { [1, :a, :a, :b, 'bee', 'see', true, true] }
+  let(:array12) { [1, :a, 'bee', true] }
   
   describe '#include_all?' do
     it 'returns true if current array includes all elements from another array' do
       expect(array1.include_all?(array2)).to eq(true)
+    end
+
+    it 'returns true if current array includes all elements from another array in reverse order' do
+      expect(array1.include_all?(array8)).to eq(true)
+    end
+
+    it 'returns true if current array includes all elements from another array with repetition' do
+      expect(array9.include_all?(array10)).to eq(true)
+    end
+
+    it 'returns true if current array includes all elements from another array with different object types' do
+      expect(array11.include_all?(array12)).to eq(true)
     end
 
     it 'returns false if current array is missing one element from another array' do
