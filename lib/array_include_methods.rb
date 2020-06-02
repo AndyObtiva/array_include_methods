@@ -7,7 +7,11 @@ module ArrayIncludeMethods
     def include_all?(array)
       return false if array.nil?
       array_include_other_array_same_class_elements = lambda do |a1, a2|
-        (a1 & a2).uniq.sort == a2.uniq.sort
+        begin
+          (a1 & a2).uniq.sort == a2.uniq.sort
+        rescue ArgumentError => e
+          a2.uniq.reduce(true) { |result, element| result && a1.include?(element) }
+        end
       end
       self_grouped_by = self.group_by(&:class)
       array_grouped_by = array.group_by(&:class)
