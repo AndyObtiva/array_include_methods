@@ -1,19 +1,18 @@
 require 'simplecov'
+require 'simplecov-lcov'
+require 'coveralls' if ENV['TRAVIS']
 
-module SimpleCov::Configuration
-  def clean_filters
-    @filters = []
-  end
+ENV['APP_ENV'] = 'test'
+
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+formatters = []
+formatters << SimpleCov::Formatter::LcovFormatter
+formatters << Coveralls::SimpleCov::Formatter if ENV['TRAVIS']
+SimpleCov.formatters = formatters
+SimpleCov.start do
+  add_filter(/^\/spec\//)
 end
 
-SimpleCov.configure do
-  clean_filters
-  load_adapter 'test_frameworks'
-end
-
-ENV["COVERAGE"] && SimpleCov.start do
-  add_filter "/.rvm/"
-end
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 

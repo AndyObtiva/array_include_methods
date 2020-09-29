@@ -40,12 +40,16 @@ Gem::Specification.new do |s|
     s.add_development_dependency(%q<rspec>.freeze, ["~> 3.5.0"])
     s.add_development_dependency(%q<rdoc>.freeze, ["~> 3.12"])
     s.add_development_dependency(%q<jeweler>.freeze, ["~> 2.3.9"])
-    s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
+    s.add_development_dependency(%q<coveralls>.freeze, ["= 0.8.23"])
+    s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.16.1"])
+    s.add_development_dependency(%q<simplecov-lcov>.freeze, ["~> 0.7.0"])
   else
     s.add_dependency(%q<rspec>.freeze, ["~> 3.5.0"])
     s.add_dependency(%q<rdoc>.freeze, ["~> 3.12"])
     s.add_dependency(%q<jeweler>.freeze, ["~> 2.3.9"])
-    s.add_dependency(%q<simplecov>.freeze, [">= 0"])
+    s.add_dependency(%q<coveralls>.freeze, ["= 0.8.23"])
+    s.add_dependency(%q<simplecov>.freeze, ["~> 0.16.1"])
+    s.add_dependency(%q<simplecov-lcov>.freeze, ["~> 0.7.0"])
   end
 end
 
