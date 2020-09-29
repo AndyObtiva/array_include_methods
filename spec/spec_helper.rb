@@ -18,7 +18,8 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rspec'
-require 'array_include_methods'
+ORIGINAL_RUBY_PLATFORM = RUBY_PLATFORM
+MAIN = self
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

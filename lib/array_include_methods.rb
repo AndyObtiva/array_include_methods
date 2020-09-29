@@ -1,4 +1,9 @@
 module ArrayIncludeMethods
+  if RUBY_PLATFORM == 'opal'
+    def self.refine(class_or_module, &refinement)
+      class_or_module.class_eval(&refinement)
+    end
+  end
   refine Array do
     # Returns `true` if all of the given `array` elements are present in `self`,
     # otherwise returns `false`
@@ -30,6 +35,12 @@ module ArrayIncludeMethods
     # Always returns `false` if the given `array` is nil
     def include_any?(array)
       !array.nil? && (array.empty? || !(self & array).empty?)
-    end
+    end  
+  end
+end
+if RUBY_PLATFORM == 'opal'
+  # Create a shim using method that does nothing since we monkey-patch in Opal earlier in `refine` method
+  def self.using(refinement)
+    # NO OP
   end
 end

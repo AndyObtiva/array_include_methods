@@ -1,4 +1,4 @@
-# ArrayIncludeMethods 1.0.2 - Ruby Refinement
+# ArrayIncludeMethods 1.0.3 - Ruby Refinement
 [![Gem Version](https://badge.fury.io/rb/array_include_methods.svg)](http://badge.fury.io/rb/array_include_methods)
 
 `Array#include_all?` & `Array#include_any?` methods missing from basic Ruby `Array` API.
@@ -10,7 +10,7 @@
 Include the following in Gemfile:
 
 ```ruby
-gem 'array_include_methods', '~> 1.0.2'
+gem 'array_include_methods', '~> 1.0.3'
 ```
 
 Run:
@@ -24,7 +24,7 @@ bundle
 Run:
 
 ```
-gem install array_include_methods -v1.0.2
+gem install array_include_methods -v1.0.3
 ```
 
 ## Usage
@@ -63,19 +63,17 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 [1, 2, 3, 4].include_any?(nil) # returns false
 ```
 
+## Opal Compatibility
+
+This gem degrades gracefully to monkey-patching in Opal Ruby and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement
+
+## TODO
+
+[TODO.md](TODO.md)
+
 ## Change Log
 
-### 1.0.2
-
-- Handled case of two arrays with elements of unsortable object types (e.g. Hash)
-
-### 1.0.1
-
-- Handled case of two arrays with different ordering of common elements
-
-### 1.0.0
-
-- Initial implementation of Array#include_all? & Array#include_any?
+[CHANGELOG.md](CHANGELOG.md)
 
 ## Contributing to array_include_methods
  

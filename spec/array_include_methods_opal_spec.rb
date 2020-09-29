@@ -1,10 +1,21 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-load 'array_include_methods.rb'
+describe 'ArrayIncludeMethods Opal' do
+  before :all do
+    RUBY_PLATFORM = 'opal'
+    
+    load 'array_include_methods.rb'
+    
+    MAIN.using ArrayIncludeMethods
+  end
+  
+  after :all do
+    RUBY_PLATFORM = ORIGINAL_RUBY_PLATFORM
+    Object.send(:remove_const, :ArrayIncludeMethods)
+    Array.undef_method(:include_any?)
+    Array.undef_method(:include_all?)    
+  end
 
-using ArrayIncludeMethods
-
-describe 'ArrayIncludeMethods' do
   let(:array1) { [1, 2, 3, 4] }
   let(:array2) { [2, 4] }
   let(:array3) { [4, 5] }

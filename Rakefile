@@ -21,7 +21,7 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Array#include_all? & Array#include_any? methods missing from basic Ruby Array API}
   gem.email = "andy.am@gmail.com"
   gem.authors = ["Andy Maleh"]
-  gem.files = Dir['LICENSE.txt', 'README.md', 'lib/*.rb']
+  gem.files = Dir['LICENSE.txt', 'README.md', 'CHANGELOG.md', 'array_include_methods.gemspec', 'VERSION', 'lib/*.rb']
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
