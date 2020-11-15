@@ -9,7 +9,8 @@ module ArrayIncludeMethods
     # otherwise returns `false`
     # Always returns `true` if the given `array` is empty
     # Always returns `false` if the given `array` is nil
-    def include_all?(array)
+    def include_all?(*array)
+      array = array[0] if array.size == 1 && array[0].is_a?(Array)
       return false if array.nil?
       array_include_other_array_same_class_elements = lambda do |a1, a2|
         begin
@@ -33,9 +34,10 @@ module ArrayIncludeMethods
     # otherwise returns `false`
     # Always returns `true` if the given `array` is empty
     # Always returns `false` if the given `array` is nil
-    def include_any?(array)
+    def include_any?(*array)
+      array = array[0] if array.size == 1 && array[0].is_a?(Array)
       !array.nil? && (array.empty? || !(self & array).empty?)
-    end  
+    end
   end
 end
 if RUBY_PLATFORM == 'opal'

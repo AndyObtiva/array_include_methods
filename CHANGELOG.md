@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.4
+
+- Support splat args (e.g. `include_any?(1, 2, 3)` instead of `include_any?([1, 2, 3])`)
+
 ## 1.0.3
 
 - Opal compatibility through monkey-patching and providing a `using` method shim so that existing gems that used the refinement in Ruby work
