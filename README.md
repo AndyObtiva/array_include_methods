@@ -71,7 +71,7 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 
 ## Opal Compatibility
 
-This gem degrades gracefully to monkey-patching in Opal Ruby and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement
+This gem degrades gracefully to monkey-patching in [Opal Ruby](https://opalrb.com) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement
 
 ## TODO
 
