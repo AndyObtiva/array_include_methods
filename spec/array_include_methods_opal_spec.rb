@@ -17,7 +17,8 @@ describe 'ArrayIncludeMethods Opal' do
   end
 
   let(:array1) { [1, 2, 3, 4] }
-  let(:array2) { [2, 4] }
+  let(:array2) { [2, 3] }
+  let(:array2a) { [2, 4] }
   let(:array3) { [4, 5] }
   let(:array4) { [] }
   let(:array5) { [] }
@@ -25,7 +26,7 @@ describe 'ArrayIncludeMethods Opal' do
   let(:array7) { [7, 8] }
   let(:array8) { [4, 2] }
   let(:array9) { [1, 2, 2, 4] }
-  let(:array10) { [1, 2, 2] }
+  let(:array10) { [1, 1, 2] }
   let(:array11) { [1, :a, :a, :b, 'bee', 'see', true, true, nil, nil] }
   let(:array12) { [1, :a, 'bee', true, nil] }
   let(:array13) { [1, 2, {a: 3}, {b: 4}, {c: 5}, nil] }
@@ -34,6 +35,11 @@ describe 'ArrayIncludeMethods Opal' do
   describe '#include_all?' do
     it 'returns true if current array includes all elements from another array' do
       expect(array1.include_all?(array2)).to eq(true)
+    end
+    
+    it 'returns true if current array includes spaced elements from another array but false if checking against array directly' do
+      expect(array1.include_all?(*array2a)).to eq(true)
+      expect(array1.include_all?(array2a)).to eq(false)
     end
 
     it 'returns true if current array includes all elements from another array in reverse order but false if checking against array directly' do

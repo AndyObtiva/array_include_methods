@@ -2,6 +2,7 @@
 
 ## 1.1.0
 
+- Perform contiguous-element `include_all?([...])` check against an array argument (not splatted)
 - Perform sorted `include_all?([...])` check against an array argument (not splatted)
 - Perform non-repetition `include_all?([...])` check against an array argument (not splatted)
 

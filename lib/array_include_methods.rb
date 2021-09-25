@@ -19,12 +19,19 @@ module ArrayIncludeMethods
       array_include_other_array_same_class_elements = lambda do |a1, a2|
         begin
           if array_argument
-            (a1 & a2) == a2
+            if a2.size > a1.size
+              false
+            else
+              size_diff = a1.size - a2.size
+              (size_diff + 1).times.any? do |start_index|
+                a1[start_index, a2.size] == a2
+              end
+            end
           else
             (a1 & a2).uniq.sort == a2.uniq.sort
           end
         rescue ArgumentError => e
-          a2.uniq.reduce(true) { |result, element| result && a1.include?(element) }
+          a2.uniq.all? { |element| a1.include?(element) }
         end
       end
       self_grouped_by = self.group_by(&:class)
