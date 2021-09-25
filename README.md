@@ -1,4 +1,4 @@
-# ArrayIncludeMethods 1.0.4 - Ruby Refinement
+# ArrayIncludeMethods 1.1.0 - Ruby Refinement
 [![Gem Version](https://badge.fury.io/rb/array_include_methods.svg)](http://badge.fury.io/rb/array_include_methods)
 [![Build Status](https://travis-ci.com/AndyObtiva/array_include_methods.svg?branch=master)](https://travis-ci.com/AndyObtiva/array_include_methods)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/array_include_methods/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/array_include_methods?branch=master)
@@ -12,7 +12,7 @@
 Include the following in Gemfile:
 
 ```ruby
-gem 'array_include_methods', '~> 1.0.4'
+gem 'array_include_methods', '~> 1.1.0'
 ```
 
 Run:
@@ -26,7 +26,7 @@ bundle
 Run:
 
 ```
-gem install array_include_methods -v1.0.4
+gem install array_include_methods -v1.1.0
 ```
 
 ## Usage
@@ -50,10 +50,14 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 ### `Array#include_all?(other_array)`
 
 ```ruby
-[1, 2, 3, 4].include_all?([2, 4]) # returns true
 [1, 2, 3, 4].include_all?(2, 4) # returns true
-[1, 2, 3, 4].include_all?([2, 4, 5]) # returns false
+[1, 2, 3, 4].include_all?([2, 4]) # returns true
+[1, 2, 3, 4].include_all?(4, 2) # returns true
+[1, 2, 3, 4].include_all?([4, 2]) # returns false (checks true array containment)
+[1, 2, 3, 4].include_all?(2, 4, 4) # returns true
+[1, 2, 3, 4].include_all?([2, 4, 4]) # returns false (checks true array containment)
 [1, 2, 3, 4].include_all?(2, 4, 5) # returns false
+[1, 2, 3, 4].include_all?([2, 4, 5]) # returns false
 [1, 2, 3, 4].include_all?([]) # returns true
 [1, 2, 3, 4].include_all?(nil) # returns false
 ```
@@ -61,10 +65,10 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 ### `Array#include_any?(other_array)`
 
 ```ruby
-[1, 2, 3, 4].include_any?([2, 4, 5]) # returns true
 [1, 2, 3, 4].include_any?(2, 4, 5) # returns true
-[1, 2, 3, 4].include_any?([6, 7]) # returns false
+[1, 2, 3, 4].include_any?([2, 4, 5]) # returns true
 [1, 2, 3, 4].include_any?(6, 7) # returns false
+[1, 2, 3, 4].include_any?([6, 7]) # returns false
 [1, 2, 3, 4].include_any?([]) # returns true
 [1, 2, 3, 4].include_any?(nil) # returns false
 ```

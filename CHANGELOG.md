@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.1.0
+
+- Perform sorted `include_all?([...])` check against an array argument (not splatted)
+- Perform non-repetition `include_all?([...])` check against an array argument (not splatted)
+
 ## 1.0.4
 
 - Support splat args (e.g. `include_any?(1, 2, 3)` instead of `include_any?([1, 2, 3])`)

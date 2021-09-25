@@ -10,11 +10,19 @@ module ArrayIncludeMethods
     # Always returns `true` if the given `array` is empty
     # Always returns `false` if the given `array` is nil
     def include_all?(*array)
-      array = array[0] if array.size == 1 && array[0].is_a?(Array)
+      array_argument = false
+      if array.size == 1 && array[0].is_a?(Array)
+        array_argument = true
+        array = array[0]
+      end
       return false if array.nil?
       array_include_other_array_same_class_elements = lambda do |a1, a2|
         begin
-          (a1 & a2).uniq.sort == a2.uniq.sort
+          if array_argument
+            (a1 & a2) == a2
+          else
+            (a1 & a2).uniq.sort == a2.uniq.sort
+          end
         rescue ArgumentError => e
           a2.uniq.reduce(true) { |result, element| result && a1.include?(element) }
         end

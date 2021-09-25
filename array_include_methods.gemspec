@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Andy Maleh".freeze]
-  s.date = "2020-11-15"
+  s.date = "2021-09-25"
   s.description = "Array#include_all? & Array#include_any? methods missing from basic Ruby Array API".freeze
   s.email = "andy.am@gmail.com".freeze
   s.extra_rdoc_files = [
@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/AndyObtiva/array_include_methods".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.1.4".freeze
+  s.rubygems_version = "3.2.22".freeze
   s.summary = "Array#include_all? & Array#include_any? methods missing from basic Ruby Array API".freeze
 
   if s.respond_to? :specification_version then
@@ -43,6 +43,7 @@ Gem::Specification.new do |s|
     s.add_development_dependency(%q<coveralls>.freeze, ["= 0.8.23"])
     s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.16.1"])
     s.add_development_dependency(%q<simplecov-lcov>.freeze, ["~> 0.7.0"])
+    s.add_development_dependency(%q<rake-tui>.freeze, ["> 0"])
   else
     s.add_dependency(%q<rspec>.freeze, ["~> 3.5.0"])
     s.add_dependency(%q<rdoc>.freeze, ["~> 3.12"])
@@ -50,6 +51,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<coveralls>.freeze, ["= 0.8.23"])
     s.add_dependency(%q<simplecov>.freeze, ["~> 0.16.1"])
     s.add_dependency(%q<simplecov-lcov>.freeze, ["~> 0.7.0"])
+    s.add_dependency(%q<rake-tui>.freeze, ["> 0"])
   end
 end
 

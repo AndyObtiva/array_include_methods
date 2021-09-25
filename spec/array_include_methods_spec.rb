@@ -14,7 +14,7 @@ describe 'ArrayIncludeMethods' do
   let(:array7) { [7, 8] }
   let(:array8) { [4, 2] }
   let(:array9) { [1, 2, 2, 4] }
-  let(:array10) { [2, 1, 1] }
+  let(:array10) { [1, 2, 2] }
   let(:array11) { [1, :a, :a, :b, 'bee', 'see', true, true, nil, nil] }
   let(:array12) { [1, :a, 'bee', true, nil] }
   let(:array13) { [1, 2, {a: 3}, {b: 4}, {c: 5}, nil] }
@@ -27,14 +27,14 @@ describe 'ArrayIncludeMethods' do
       expect(array1.include_all?(*array2)).to eq(true)
     end
 
-    it 'returns true if current array includes all elements from another array in reverse order' do
-      expect(array1.include_all?(array8)).to eq(true)
+    it 'returns true if current array includes all elements from another splatted array in reverse order but false if checking against array directly' do
       expect(array1.include_all?(*array8)).to eq(true)
+      expect(array1.include_all?(array8)).to eq(false)
     end
 
-    it 'returns true if current array includes all elements from another array with repetition' do
-      expect(array9.include_all?(array10)).to eq(true)
+    it 'returns true if current array includes all elements from another splatted array with repetition but false if checking against array directly' do
       expect(array9.include_all?(*array10)).to eq(true)
+      expect(array9.include_all?(array10)).to eq(false)
     end
 
     it 'returns true if current array includes all elements from another array with different object types' do
