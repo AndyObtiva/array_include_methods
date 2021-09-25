@@ -1,4 +1,4 @@
-# ArrayIncludeMethods 1.1.0 - Ruby Refinement
+# ArrayIncludeMethods 1.2.0 - Ruby Refinement
 [![Gem Version](https://badge.fury.io/rb/array_include_methods.svg)](http://badge.fury.io/rb/array_include_methods)
 [![Build Status](https://travis-ci.com/AndyObtiva/array_include_methods.svg?branch=master)](https://travis-ci.com/AndyObtiva/array_include_methods)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/array_include_methods/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/array_include_methods?branch=master)
@@ -12,7 +12,7 @@
 Include the following in Gemfile:
 
 ```ruby
-gem 'array_include_methods', '~> 1.1.0'
+gem 'array_include_methods', '~> 1.2.0'
 ```
 
 Run:
@@ -26,7 +26,7 @@ bundle
 Run:
 
 ```
-gem install array_include_methods -v1.1.0
+gem install array_include_methods -v1.2.0
 ```
 
 ## Usage
@@ -47,7 +47,18 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 
 ## Examples
 
-### `Array#include_all?(other_array)`
+### `Array#include_any?(*other_array)`
+
+```ruby
+[1, 2, 3, 4].include_any?(2, 4, 5) # returns true
+[1, 2, 3, 4].include_any?([2, 4, 5]) # returns true
+[1, 2, 3, 4].include_any?(6, 7) # returns false
+[1, 2, 3, 4].include_any?([6, 7]) # returns false
+[1, 2, 3, 4].include_any?([]) # returns true
+[1, 2, 3, 4].include_any?(nil) # returns false
+```
+
+### `Array#include_all?(*other_array)`
 
 ```ruby
 [1, 2, 3, 4].include_all?(2, 3) # returns true
@@ -64,15 +75,19 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 [1, 2, 3, 4].include_all?(nil) # returns false
 ```
 
-### `Array#include_any?(other_array)`
+### `Array#array_index(other_array)`
+
+Returns first array index of `other_array` in `first_array` assuming `first_array.include_all?(other_array)` returns true
 
 ```ruby
-[1, 2, 3, 4].include_any?(2, 4, 5) # returns true
-[1, 2, 3, 4].include_any?([2, 4, 5]) # returns true
-[1, 2, 3, 4].include_any?(6, 7) # returns false
-[1, 2, 3, 4].include_any?([6, 7]) # returns false
-[1, 2, 3, 4].include_any?([]) # returns true
-[1, 2, 3, 4].include_any?(nil) # returns false
+[1, 2, 3, 4].array_index([2, 3, 4]) # returns 1
+[1, 2, 3, 4].array_index([2, 3]) # returns 1
+[1, 2, 3, 4].array_index([3, 4]) # returns 2
+[1, 2, 3, 4].array_index([2, 4]) # returns -1
+[1, 2, 3, 4].array_index([4, 2]) # returns -1
+[1, 2, 3, 4].array_index([2, 4, 5]) # returns -1
+[1, 2, 3, 4].array_index([]) # returns -1
+[1, 2, 3, 4].array_index(nil) # returns -1
 ```
 
 ## Opal Compatibility

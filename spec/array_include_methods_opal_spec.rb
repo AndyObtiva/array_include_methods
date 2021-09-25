@@ -31,6 +31,8 @@ describe 'ArrayIncludeMethods Opal' do
   let(:array12) { [1, :a, 'bee', true, nil] }
   let(:array13) { [1, 2, {a: 3}, {b: 4}, {c: 5}, nil] }
   let(:array14) { [1, {a: 3}, {b: 4}, nil] }
+  let(:array15) { [1] }
+
   
   describe '#include_all?' do
     it 'returns true if current array includes all elements from another array' do
@@ -112,6 +114,32 @@ describe 'ArrayIncludeMethods Opal' do
 
     it 'returns false if current array is empty and other array is nil' do
       expect(array4.include_any?(array6)).to eq(false)
+    end
+  end
+  
+  describe '#array_index' do
+    it 'returns 1' do
+      expect(array1.array_index(array2)).to eq(1)
+    end
+    
+    it 'returns 0' do
+      expect(array1.array_index(array15)).to eq(0)
+    end
+
+    it 'returns -1 if array does not include second array' do
+      expect(array1.array_index(array2a)).to eq(-1)
+    end
+
+    it 'returns -1 if other array is empty' do
+      expect(array1.array_index(array5)).to eq(0)
+    end
+
+    it 'returns -1 if both arrays are empty' do
+      expect(array4.array_index(array5)).to eq(0)
+    end
+
+    it 'returns -1 if other array is nil' do
+      expect(array1.array_index(array6)).to eq(-1)
     end
   end
 end

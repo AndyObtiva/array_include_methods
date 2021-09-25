@@ -136,4 +136,30 @@ describe 'ArrayIncludeMethods' do
       expect(array2.include_any?(*array15)).to eq(false)
     end
   end
+  
+  describe '#array_index' do
+    it 'returns 1' do
+      expect(array1.array_index(array2)).to eq(1)
+    end
+
+    it 'returns 0' do
+      expect(array1.array_index(array15)).to eq(0)
+    end
+
+    it 'returns -1 if array does not include second array' do
+      expect(array1.array_index(array2a)).to eq(-1)
+    end
+
+    it 'returns -1 if other array is empty' do
+      expect(array1.array_index(array5)).to eq(0)
+    end
+
+    it 'returns -1 if both arrays are empty' do
+      expect(array4.array_index(array5)).to eq(0)
+    end
+
+    it 'returns -1 if other array is nil' do
+      expect(array1.array_index(array6)).to eq(-1)
+    end
+  end
 end

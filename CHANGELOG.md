@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.2.0
+
+- Add `Array#array_index(array)` method to determine start array index of other array
+
 ## 1.1.0
 
 - Perform contiguous-element `include_all?([...])` check against an array argument (not splatted)

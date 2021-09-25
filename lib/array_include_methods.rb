@@ -53,6 +53,21 @@ module ArrayIncludeMethods
       array = array[0] if array.size == 1 && array[0].is_a?(Array)
       !array.nil? && (array.empty? || !(self & array).empty?)
     end
+    
+    def array_index(array)
+      result_array_index = -1
+      return result_array_index if array.nil?
+      if array.size <= self.size
+        size_diff = self.size - array.size
+        current_array_index = nil
+        result = (size_diff + 1).times.any? do |start_index|
+          current_array_index = start_index
+          self[start_index, array.size] == array
+        end
+        result_array_index = current_array_index if result
+      end
+      result_array_index
+    end
   end
 end
 if RUBY_PLATFORM == 'opal'
