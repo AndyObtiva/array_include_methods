@@ -3,6 +3,7 @@
 ## 1.4.0
 
 - `array_diff_indexes(other_array)` (alias: `array_diff_indices`)
+- `array_intersection_indexes(other_array)` (alias: `array_intersection_indices`)
 
 ## 1.3.0
 

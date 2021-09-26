@@ -1,4 +1,4 @@
-# ArrayIncludeMethods 1.3.0 - Ruby Refinement
+# ArrayIncludeMethods 1.4.0 - Ruby Refinement
 [![Gem Version](https://badge.fury.io/rb/array_include_methods.svg)](http://badge.fury.io/rb/array_include_methods)
 [![Build Status](https://travis-ci.com/AndyObtiva/array_include_methods.svg?branch=master)](https://travis-ci.com/AndyObtiva/array_include_methods)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/array_include_methods/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/array_include_methods?branch=master)
@@ -12,7 +12,7 @@
 Include the following in Gemfile:
 
 ```ruby
-gem 'array_include_methods', '~> 1.3.0'
+gem 'array_include_methods', '~> 1.4.0'
 ```
 
 Run:
@@ -26,7 +26,7 @@ bundle
 Run:
 
 ```
-gem install array_include_methods -v1.3.0
+gem install array_include_methods -v1.4.0
 ```
 
 ## Usage
@@ -94,6 +94,38 @@ Returns first array index of `other_array` in `first_array` assuming `first_arra
 [1, 2, 3, 4].array_index([2, 4, 5]) # returns -1
 [1, 2, 3, 4].array_index([]) # returns -1
 [1, 2, 3, 4].array_index(nil) # returns -1
+```
+
+### `Array#array_intersection_indexes(other_array)`
+(alias: `Array#array_intersection_indices(other_array)`)
+
+Returns indexes from `self` array for which elements match elements in `other_array` assuming same sort
+
+```ruby
+[1, 2, 3, 4].array_intersection_indexes([2, 3, 4]) # returns [1, 2, 3]
+[1, 2, 3, 4].array_intersection_indexes([2, 3]) # returns [1, 2]
+[1, 2, 3, 4].array_intersection_indexes([3, 4]) # returns [2, 3]
+[1, 2, 3, 4].array_intersection_indexes([2, 4]) # returns [1, 3]
+[1, 2, 3, 4].array_intersection_indexes([4, 2]) # returns [3]
+[1, 2, 3, 4].array_intersection_indexes([2, 4, 5]) # returns [1, 3]
+[1, 2, 3, 4].array_intersection_indexes([]) # returns []
+[1, 2, 3, 4].array_intersection_indexes(nil) # returns []
+```
+
+### `Array#array_diff_indexes(other_array)`
+(alias: `Array#array_diff_indices(other_array)`)
+
+Returns indexes from `self` array for which elements do not match elements in `other_array` assuming same sort
+
+```ruby
+[1, 2, 3, 4].array_diff_indexes([2, 3, 4]) # returns [0]
+[1, 2, 3, 4].array_diff_indexes([2, 3]) # returns [0, 3]
+[1, 2, 3, 4].array_diff_indexes([3, 4]) # returns [0, 1]
+[1, 2, 3, 4].array_diff_indexes([2, 4]) # returns [0, 2]
+[1, 2, 3, 4].array_diff_indexes([4, 2]) # returns [0, 1, 2]
+[1, 2, 3, 4].array_diff_indexes([2, 4, 5]) # returns [0, 2]
+[1, 2, 3, 4].array_diff_indexes([]) # returns [0, 1, 2, 3]
+[1, 2, 3, 4].array_diff_indexes(nil) # returns [0, 1, 2, 3]
 ```
 
 ## Opal Compatibility

@@ -66,10 +66,22 @@ module ArrayIncludeMethods
       result_array_index
     end
     
+    def array_intersection_indexes(array)
+      array_intersection_and_diff_indexes(array)[:intersection_indexes]
+    end
+    alias array_intersection_indices array_intersection_indexes
+    
     def array_diff_indexes(array)
-      return [] if array.nil?
-      diff_indexes = []
+      array_intersection_and_diff_indexes(array)[:diff_indexes]
+    end
+    alias array_diff_indices array_diff_indexes
+    
+    private
+    
+    def array_intersection_and_diff_indexes(array)
+      return {intersection_indexes: [], diff_indexes: self.size.times.to_a} if array.nil?
       intersection_indexes = []
+      diff_indexes = []
       array_current_index = 0
       each_with_index do |element, index|
         if element == array[array_current_index]
@@ -79,9 +91,11 @@ module ArrayIncludeMethods
           diff_indexes << index
         end
       end
-      diff_indexes
+      {
+        intersection_indexes: intersection_indexes,
+        diff_indexes: diff_indexes
+      }
     end
-    alias array_diff_indices array_diff_indexes
   end
 end
 if RUBY_PLATFORM == 'opal'
