@@ -10,26 +10,10 @@ module ArrayIncludeMethods
     # Always returns `true` if the given `array` is empty
     # Always returns `false` if the given `array` is nil
     def include_all?(*array)
-      array_argument = false
-      if array.size == 1 && array[0].is_a?(Array)
-        array_argument = true
-        array = array[0]
-      end
       return false if array.nil?
       array_include_other_array_same_class_elements = lambda do |a1, a2|
         begin
-          if array_argument
-            if a2.size > a1.size
-              false
-            else
-              size_diff = a1.size - a2.size
-              (size_diff + 1).times.any? do |start_index|
-                a1[start_index, a2.size] == a2
-              end
-            end
-          else
-            (a1 & a2).uniq.sort == a2.uniq.sort
-          end
+          (a1 & a2).uniq.sort == a2.uniq.sort
         rescue ArgumentError => e
           a2.uniq.all? { |element| a1.include?(element) }
         end
@@ -42,6 +26,21 @@ module ArrayIncludeMethods
         array_elements = pair.last
         self_grouped_by[array_class]
         result && array_include_other_array_same_class_elements.call(self_grouped_by[array_class], array_elements)
+      end
+    end
+
+    # Returns `true` if the given `array` is present in `self` (in the same element order without repetition)
+    # Always returns `true` if the given `array` is empty
+    # Always returns `false` if the given `array` is nil
+    def include_array?(array)
+      return false if array.nil?
+      if array.size > self.size
+        false
+      else
+        size_diff = self.size - array.size
+        (size_diff + 1).times.any? do |start_index|
+          self[start_index, array.size] == array
+        end
       end
     end
 

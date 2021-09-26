@@ -17,78 +17,124 @@ describe 'ArrayIncludeMethods' do
   let(:array9) { [1, 2, 2, 4] }
   let(:array10) { [1, 1, 2] }
   let(:array11) { [1, :a, :a, :b, 'bee', 'see', true, true, nil, nil] }
-  let(:array12) { [1, :a, 'bee', true, nil] }
+  let(:array12) { [1, :a, :a, :b, 'bee', 'see', true, true, nil] }
   let(:array13) { [1, 2, {a: 3}, {b: 4}, {c: 5}, nil] }
-  let(:array14) { [1, {a: 3}, {b: 4}, nil] }
+  let(:array14) { [2, {a: 3}, {b: 4}, {c: 5}, nil] }
   let(:array15) { [1] }
   
   describe '#include_all?' do
-    it 'returns true if current array includes all elements from another array' do
+    it 'returns true if current array includes all elements' do
       expect(array1.include_all?(*array2)).to eq(true)
-      expect(array1.include_all?(array2)).to eq(true)
     end
 
-    it 'returns true if current array includes spaced elements from another array but false if checking against array directly' do
+    it 'returns true if current array includes spaced elements' do
       expect(array1.include_all?(*array2a)).to eq(true)
-      expect(array1.include_all?(array2a)).to eq(false)
     end
 
-    it 'returns true if current array includes all elements from another splatted array in reverse order but false if checking against array directly' do
+    it 'returns true if current array includes all elements in reverse order' do
       expect(array1.include_all?(*array8)).to eq(true)
-      expect(array1.include_all?(array8)).to eq(false)
     end
 
-    it 'returns true if current array includes all elements from another splatted array with repetition but false if checking against array directly' do
+    it 'returns true if current array includes all elements with repetition' do
       expect(array9.include_all?(*array10)).to eq(true)
-      expect(array9.include_all?(array10)).to eq(false)
     end
 
-    it 'returns true if current array includes all elements from another array with different object types' do
-      expect(array11.include_all?(array12)).to eq(true)
+    it 'returns true if current array includes all elements with different object types' do
       expect(array11.include_all?(*array12)).to eq(true)
     end
 
-    it 'returns true if current array includes all elements from another array with unsortable object types' do
-      expect(array13.include_all?(array14)).to eq(true)
+    it 'returns true if current array includes all elements with unsortable object types' do
       expect(array13.include_all?(*array14)).to eq(true)
     end
 
-    it 'returns false if current array is missing one element from another array' do
-      expect(array3.include_all?(array2)).to eq(false)
+    it 'returns false if current array is missing one element' do
       expect(array3.include_all?(*array2)).to eq(false)
     end
 
     it 'returns true if current array is non-empty and other array is empty' do
-      expect(array2.include_all?(array4)).to eq(true)
       expect(array2.include_all?(*array4)).to eq(true)
     end
 
     it 'returns true if current array is empty and other array is empty' do
-      expect(array4.include_all?(array5)).to eq(true)
       expect(array4.include_all?(*array5)).to eq(true)
     end
 
     it 'returns true if current array is empty and other array is non-empty' do
-      expect(array4.include_all?(array3)).to eq(false)
       expect(array4.include_all?(*array3)).to eq(false)
     end
 
     it 'returns false if current array is non-empty and other array is nil' do
-      expect(array1.include_all?(array6)).to eq(false)
+      expect(array1.include_all?(*array6)).to eq(true)
     end
 
     it 'returns false if current array is empty and other array is nil' do
-      expect(array4.include_all?(array6)).to eq(false)
+      expect(array4.include_all?(*array6)).to eq(true)
     end
 
     it 'returns true if current array is includes other array as one element' do
-      expect(array15.include_all?(array15)).to eq(true)
       expect(array15.include_all?(*array15)).to eq(true)
     end
 
     it 'returns false if current array does not include other array as one element' do
-      expect(array2.include_all?(array15)).to eq(false)
       expect(array2.include_all?(*array15)).to eq(false)
+    end
+  end
+  
+  describe '#include_array?' do
+    it 'returns true if current array includes all elements from another array' do
+      expect(array1.include_array?(array2)).to eq(true)
+    end
+
+    it 'returns false if current array includes spaced elements from another array' do
+      expect(array1.include_array?(array2a)).to eq(false)
+    end
+
+    it 'returns false if current array includes all elements from another array' do
+      expect(array1.include_array?(array8)).to eq(false)
+    end
+
+    it 'returns false if current array includes all elements from another array' do
+      expect(array9.include_array?(array10)).to eq(false)
+    end
+
+    it 'returns true if current array includes all elements from another array with different object types' do
+      expect(array11.include_array?(array12)).to eq(true)
+    end
+
+    it 'returns true if current array includes all elements from another array with unsortable object types' do
+      expect(array13.include_array?(array14)).to eq(true)
+    end
+
+    it 'returns false if current array is missing one element from another array' do
+      expect(array3.include_array?(array2)).to eq(false)
+    end
+
+    it 'returns true if current array is non-empty and other array is empty' do
+      expect(array2.include_array?(array4)).to eq(true)
+    end
+
+    it 'returns true if current array is empty and other array is empty' do
+      expect(array4.include_array?(array5)).to eq(true)
+    end
+
+    it 'returns true if current array is empty and other array is non-empty' do
+      expect(array4.include_array?(array3)).to eq(false)
+    end
+
+    it 'returns false if current array is non-empty and other array is nil' do
+      expect(array1.include_array?(array6)).to eq(false)
+    end
+
+    it 'returns false if current array is empty and other array is nil' do
+      expect(array4.include_array?(array6)).to eq(false)
+    end
+
+    it 'returns true if current array is includes other array as one element' do
+      expect(array15.include_array?(array15)).to eq(true)
+    end
+
+    it 'returns false if current array does not include other array as one element' do
+      expect(array2.include_array?(array15)).to eq(false)
     end
   end
   

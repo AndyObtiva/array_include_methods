@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.0
+
+- Separate between operations `include_all?(*array)` and `include_all?(array)` to avoid confusion (rename the latter to `include_array?(array)`)
+
 ## 1.2.0
 
 - Add `Array#array_index(array)` method to determine start array index of other array
