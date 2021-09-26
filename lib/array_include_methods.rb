@@ -8,7 +8,6 @@ module ArrayIncludeMethods
     # Returns `true` if all of the given `array` elements are present in `self`,
     # otherwise returns `false`
     # Always returns `true` if the given `array` is empty
-    # Always returns `false` if the given `array` is nil
     # `same_sort` option indicates that array must have the same sort as `self`. By default, it is `false`
     def include_all?(*array, same_sort: false)
       return false if array.size > self.size
@@ -48,9 +47,7 @@ module ArrayIncludeMethods
     # Returns `true` if any of the given `array` elements are present in `self`,
     # otherwise returns `false`
     # Always returns `true` if the given `array` is empty
-    # Always returns `false` if the given `array` is nil
     def include_any?(*array)
-      array = array[0] if array.size == 1 && array[0].is_a?(Array)
       !array.nil? && (array.empty? || !(self & array).empty?)
     end
     

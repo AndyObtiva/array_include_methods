@@ -51,10 +51,8 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 
 ```ruby
 [1, 2, 3, 4].include_any?(2, 4, 5) # returns true
-[1, 2, 3, 4].include_any?([2, 4, 5]) # returns true
 [1, 2, 3, 4].include_any?(6, 7) # returns false
-[1, 2, 3, 4].include_any?([6, 7]) # returns false
-[1, 2, 3, 4].include_any?([]) # returns true
+[1, 2, 3, 4].include_any?() # returns true
 [1, 2, 3, 4].include_any?(nil) # returns false
 ```
 

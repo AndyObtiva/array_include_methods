@@ -2,9 +2,9 @@
 
 ## 1.3.0
 
-- Separate between operations `include_all?(*array)` and `include_all?(array)` to avoid confusion (rename the latter to `include_array?(array)`)
+- [API Breaking] Separate between operations `include_any?(*array)` and `include_any?(array)` to avoid confusion (remove support for the latter as it is not necessary)
+- [API Breaking] Separate between operations `include_all?(*array)` and `include_all?(array)` to avoid confusion (rename the latter to `include_array?(array)`)
 - `Array#include_all?(*other_array, same_sort: true)` accepts `same_sort` option (default: `false`)
-
 
 ## 1.2.0
 
