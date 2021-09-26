@@ -64,6 +64,7 @@ Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
 [1, 2, 3, 4].include_all?(2, 3) # returns true
 [1, 2, 3, 4].include_all?(2, 4) # returns true
 [1, 2, 3, 4].include_all?(4, 2) # returns true
+[1, 2, 3, 4].include_all?(4, 2, same_sort: true) # returns false
 [1, 2, 3, 4].include_all?(2, 4, 4) # returns true
 [1, 2, 3, 4].include_all?(2, 4, 5) # returns false
 [1, 2, 3, 4].include_all?() # returns true

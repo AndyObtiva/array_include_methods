@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.4.0)
+    awesome_print (1.9.2)
     builder (3.2.4)
     coveralls (0.8.23)
       json (>= 1.8, < 3)
@@ -56,6 +57,8 @@ GEM
     pastel (0.8.0)
       tty-color (~> 0.5)
     psych (4.0.1)
+    puts_debuggerer (0.13.1)
+      awesome_print (~> 1.9.2)
     racc (1.5.2)
     rack (2.2.3)
     rake (13.0.6)
@@ -109,6 +112,7 @@ PLATFORMS
 DEPENDENCIES
   coveralls (= 0.8.23)
   jeweler (~> 2.3.9)
+  puts_debuggerer (> 0)
   rake-tui (> 0)
   rdoc (~> 3.12)
   rspec (~> 3.5.0)

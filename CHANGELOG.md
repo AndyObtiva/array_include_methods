@@ -3,6 +3,8 @@
 ## 1.3.0
 
 - Separate between operations `include_all?(*array)` and `include_all?(array)` to avoid confusion (rename the latter to `include_array?(array)`)
+- `Array#include_all?(*other_array, same_sort: true)` accepts `same_sort` option (default: `false`)
+
 
 ## 1.2.0
 

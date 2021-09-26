@@ -9,13 +9,18 @@ module ArrayIncludeMethods
     # otherwise returns `false`
     # Always returns `true` if the given `array` is empty
     # Always returns `false` if the given `array` is nil
-    def include_all?(*array)
+    # By default, it does not require the same sort of the comparison array
+    def include_all?(*array, same_sort: false)
       return false if array.nil?
       array_include_other_array_same_class_elements = lambda do |a1, a2|
-        begin
-          (a1 & a2).uniq.sort == a2.uniq.sort
-        rescue ArgumentError => e
-          a2.uniq.all? { |element| a1.include?(element) }
+        if same_sort
+          (a1 & a2).uniq == a2.uniq
+        else
+          begin
+            (a1 & a2).uniq.sort == a2.uniq.sort
+          rescue ArgumentError => e
+            a2.uniq.all? { |element| a1.include?(element) }
+          end
         end
       end
       self_grouped_by = self.group_by(&:class)

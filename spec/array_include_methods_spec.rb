@@ -27,12 +27,20 @@ describe 'ArrayIncludeMethods' do
       expect(array1.include_all?(*array2)).to eq(true)
     end
 
+    it 'returns true if current array includes all elements' do
+      expect(array1.include_all?(*array2, same_sort: true)).to eq(true)
+    end
+
     it 'returns true if current array includes spaced elements' do
       expect(array1.include_all?(*array2a)).to eq(true)
     end
 
     it 'returns true if current array includes all elements in reverse order' do
       expect(array1.include_all?(*array8)).to eq(true)
+    end
+
+    it 'returns true if current array includes spaced elements' do
+      expect(array1.include_all?(*array8, same_sort: true)).to eq(false)
     end
 
     it 'returns true if current array includes all elements with repetition' do
