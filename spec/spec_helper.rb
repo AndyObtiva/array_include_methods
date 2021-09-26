@@ -16,6 +16,7 @@ end
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
+require 'puts_debuggerer'
 require 'rspec'
 ORIGINAL_RUBY_PLATFORM = RUBY_PLATFORM
 MAIN = self

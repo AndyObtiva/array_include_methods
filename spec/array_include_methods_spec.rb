@@ -15,7 +15,7 @@ describe 'ArrayIncludeMethods' do
   let(:array7) { [7, 8] }
   let(:array8) { [4, 2] }
   let(:array9) { [1, 2, 2, 4] }
-  let(:array10) { [1, 1, 2] }
+  let(:array10) { [1, 2, 2] }
   let(:array11) { [1, :a, :a, :b, 'bee', 'see', true, true, nil, nil] }
   let(:array12) { [1, :a, :a, :b, 'bee', 'see', true, true, nil] }
   let(:array13) { [1, 2, {a: 3}, {b: 4}, {c: 5}, nil] }
@@ -42,7 +42,7 @@ describe 'ArrayIncludeMethods' do
     it 'returns true if current array includes spaced elements' do
       expect(array1.include_all?(*array8, same_sort: true)).to eq(false)
     end
-
+ 
     it 'returns true if current array includes all elements with repetition' do
       expect(array9.include_all?(*array10)).to eq(true)
     end
@@ -102,7 +102,7 @@ describe 'ArrayIncludeMethods' do
     end
 
     it 'returns false if current array includes all elements from another array' do
-      expect(array9.include_array?(array10)).to eq(false)
+      expect(array9.include_array?(array10)).to eq(true)
     end
 
     it 'returns true if current array includes all elements from another array with different object types' do

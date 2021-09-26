@@ -9,29 +9,25 @@ module ArrayIncludeMethods
     # otherwise returns `false`
     # Always returns `true` if the given `array` is empty
     # Always returns `false` if the given `array` is nil
-    # By default, it does not require the same sort of the comparison array
+    # `same_sort` option indicates that array must have the same sort as `self`. By default, it is `false`
     def include_all?(*array, same_sort: false)
-      return false if array.nil?
-      array_include_other_array_same_class_elements = lambda do |a1, a2|
-        if same_sort
-          (a1 & a2).uniq == a2.uniq
+      return false if array.size > self.size
+      self_copy = self.dup
+      array_copy = array.dup
+      book_keeping_array_copy = array.dup
+      self_element_index = last_element_index = -1
+      array_copy.each do |element|
+        if self_copy.include?(element)
+          last_element_index = self_element_index
+          self_element_index = self_copy.index(element)
+          return false if same_sort && self_element_index < last_element_index
+          self_copy.delete_at(self_element_index)
+          book_keeping_array_copy.delete(element)
         else
-          begin
-            (a1 & a2).uniq.sort == a2.uniq.sort
-          rescue ArgumentError => e
-            a2.uniq.all? { |element| a1.include?(element) }
-          end
+          return false
         end
       end
-      self_grouped_by = self.group_by(&:class)
-      array_grouped_by = array.group_by(&:class)
-      return false unless array_include_other_array_same_class_elements.call(self_grouped_by.keys.map(&:to_s), array_grouped_by.keys.map(&:to_s))
-      array_grouped_by.reduce(true) do |result, pair|
-        array_class = pair.first
-        array_elements = pair.last
-        self_grouped_by[array_class]
-        result && array_include_other_array_same_class_elements.call(self_grouped_by[array_class], array_elements)
-      end
+      book_keeping_array_copy.empty?
     end
 
     # Returns `true` if the given `array` is present in `self` (in the same element order without repetition)
