@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.4.0
+
+- `array_diff_indexes(other_array)` (alias: `array_diff_indices`)
+
 ## 1.3.0
 
 - [API Breaking] Separate between operations `include_any?(*array)` and `include_any?(array)` to avoid confusion (remove support for the latter as it is not necessary)

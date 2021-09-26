@@ -209,4 +209,30 @@ describe 'ArrayIncludeMethods' do
       expect(array1.array_index(array6)).to eq(-1)
     end
   end
+  
+  describe '#array_diff_indexes' do
+    it 'returns [0, 3]' do
+      expect(array1.array_diff_indexes(array2)).to eq([0, 3])
+    end
+
+    it 'returns [1, 2, 3]' do
+      expect(array1.array_diff_indexes(array15)).to eq([1, 2, 3])
+    end
+
+    it 'returns [0, 2]' do
+      expect(array1.array_diff_indexes(array2a)).to eq([0, 2])
+    end
+
+    it 'returns [0, 1, 2, 3]' do
+      expect(array1.array_diff_indexes(array5)).to eq([0, 1, 2, 3])
+    end
+
+    it 'returns []' do
+      expect(array4.array_diff_indexes(array5)).to eq([])
+    end
+
+    it 'returns [] for nil array' do
+      expect(array1.array_diff_indexes(array6)).to eq([])
+    end
+  end
 end

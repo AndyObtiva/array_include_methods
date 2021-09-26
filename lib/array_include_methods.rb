@@ -65,6 +65,23 @@ module ArrayIncludeMethods
       end
       result_array_index
     end
+    
+    def array_diff_indexes(array)
+      return [] if array.nil?
+      diff_indexes = []
+      intersection_indexes = []
+      array_current_index = 0
+      each_with_index do |element, index|
+        if element == array[array_current_index]
+          intersection_indexes << index
+          array_current_index += 1
+        else
+          diff_indexes << index
+        end
+      end
+      diff_indexes
+    end
+    alias array_diff_indices array_diff_indexes
   end
 end
 if RUBY_PLATFORM == 'opal'
