@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/AndyObtiva/array_include_methods"
   gem.license = "MIT"
   gem.summary = %Q{Array#include_all? & Array#include_any? methods missing from basic Ruby Array API}
-  gem.description = %Q{Array#include_all? & Array#include_any? methods missing from basic Ruby Array API}
+  gem.description = %Q{Array#include_all?, Array#include_any?, Array#include_array?, Array#array_index, Array#array_diff_indices, and Array#array_intersection_indices methods missing from basic Ruby Array API}
   gem.email = "andy.am@gmail.com"
   gem.authors = ["Andy Maleh"]
   gem.files = Dir['LICENSE.txt', 'README.md', 'CHANGELOG.md', 'array_include_methods.gemspec', 'VERSION', 'lib/*.rb']
