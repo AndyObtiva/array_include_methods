@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/AndyObtiva/array_include_methods.svg?branch=master)](https://travis-ci.com/AndyObtiva/array_include_methods)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/array_include_methods/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/array_include_methods?branch=master)
 
-`Array#include_all?` & `Array#include_any?` methods missing from basic Ruby `Array` API.
+`Array#include_all?`, `Array#include_any?`, `Array#include_array?`, `Array#array_index`, `Array#array_diff_indices`, and `Array#array_intersection_indices` methods missing from basic Ruby `Array` API.
 
 ## Setup
 
