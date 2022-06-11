@@ -18,7 +18,7 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'puts_debuggerer'
 require 'rspec'
-ORIGINAL_RUBY_PLATFORM = RUBY_PLATFORM
+ORIGINAL_RUBY_ENGINE = RUBY_ENGINE
 MAIN = self
 
 # Requires supporting files with custom matchers and macros, etc,

@@ -1,4 +1,4 @@
-# ArrayIncludeMethods 1.4.0 - Ruby Refinement
+# ArrayIncludeMethods 1.5.0 - Ruby Refinement
 [![Gem Version](https://badge.fury.io/rb/array_include_methods.svg)](http://badge.fury.io/rb/array_include_methods)
 [![Build Status](https://travis-ci.com/AndyObtiva/array_include_methods.svg?branch=master)](https://travis-ci.com/AndyObtiva/array_include_methods)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/array_include_methods/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/array_include_methods?branch=master)
@@ -12,7 +12,7 @@
 Include the following in Gemfile:
 
 ```ruby
-gem 'array_include_methods', '~> 1.4.0'
+gem 'array_include_methods', '~> 1.5.0'
 ```
 
 Run:
@@ -26,7 +26,7 @@ bundle
 Run:
 
 ```
-gem install array_include_methods -v1.4.0
+gem install array_include_methods -v1.5.0
 ```
 
 ## Usage
@@ -128,9 +128,17 @@ Returns indexes from `self` array for which elements do not match elements in `o
 [1, 2, 3, 4].array_diff_indexes(nil) # returns [0, 1, 2, 3]
 ```
 
+## JRuby Compatibility
+
+This gem is 100% compatible with JRuby.
+
 ## Opal Compatibility
 
-This gem degrades gracefully to monkey-patching in [Opal Ruby](https://opalrb.com) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement
+This gem degrades gracefully to monkey-patching in [Opal Ruby](https://opalrb.com) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement.
+
+## RubyMotion Compatibility
+
+This gem degrades gracefully to monkey-patching in [RubyMotion](http://www.rubymotion.com/) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement.
 
 ## TODO
 

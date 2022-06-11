@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.5.0
+
+- Add RubyMotion compatibility
+- Ensure Opal compatibility happens through RUBY_ENGINE instead of RUBY_PLATFORM
+
 ## 1.4.0
 
 - `array_diff_indexes(other_array)` (alias: `array_diff_indices`)
