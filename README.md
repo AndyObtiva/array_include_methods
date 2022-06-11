@@ -43,7 +43,7 @@ To activate the `ArrayIncludeMethods` Ruby Refinement for the `Array` class, add
 using ArrayIncludeMethods
 ```
 
-Now, you have `#include_all?` and `#include_any?` methods on `Array` objects.
+Now, you have `#include_all?`, `#include_any?`, `#include_array?`, `#array_index`, `#array_diff_indices`, and `#array_intersection_indices` methods on `Array` objects.
 
 ## Examples
 
@@ -160,5 +160,6 @@ This gem degrades gracefully to monkey-patching in [RubyMotion](http://www.rubym
 
 ## Copyright
 
-Copyright (c) 2020 Andy Maleh. See LICENSE.txt for
-further details.
+[MIT](LICENSE.txt)
+
+Copyright (c) 2020-2022 Andy Maleh. See [LICENSE.txt](LICENSE.txt) for further details.
