@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.1
+
+- Add `array_difference_indices`/`array_difference_indexes` as aliases for `array_diff_indices`/`array_diff_indexes`
+
 ## 1.5.0
 
 - Add RubyMotion compatibility

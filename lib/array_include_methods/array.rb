@@ -86,6 +86,8 @@ module ArrayIncludeMethods
       array_intersection_and_diff_indexes(array)[:diff_indexes]
     end
     alias array_diff_indices array_diff_indexes
+    alias array_difference_indexes array_diff_indexes
+    alias array_difference_indices array_diff_indexes
     
     private
     
