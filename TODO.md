@@ -1,6 +1,5 @@
 # TODO
 
-- Support `array_diff`/`array_difference` (return elements of `array_diff_indexes`)
 - Support `array_intersection` (returns elements of `array_intersection_indexes`)
 - Support `duplicates`
 - Provide the option to monkey patch all the array methods without a Ruby refinement.

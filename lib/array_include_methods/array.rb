@@ -89,6 +89,11 @@ module ArrayIncludeMethods
     alias array_difference_indexes array_diff_indexes
     alias array_difference_indices array_diff_indexes
     
+    def array_diff(array)
+      array_diff_indexes(array).map { |index| self[index] }
+    end
+    alias array_difference array_diff
+    
     private
     
     def array_intersection_and_diff_indexes(array)

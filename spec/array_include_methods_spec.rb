@@ -247,7 +247,7 @@ describe 'ArrayIncludeMethods' do
       end
   
       it 'returns [1, 2, 3]' do
-        expect(array1.array_diff_indices(array15)).to eq([1, 2, 3])
+        expect(array1.send(array_diff_indexes_method, array15)).to eq([1, 2, 3])
       end
   
       it 'returns [0, 2]' do
@@ -268,6 +268,38 @@ describe 'ArrayIncludeMethods' do
   
       it 'returns [0, 1, 2, 3] for nil array' do
         expect(array1.send(array_diff_indexes_method, array6)).to eq([0, 1, 2, 3])
+      end
+    end
+  end
+  
+  %i[array_diff array_difference].each do |array_diff_method|
+    describe "##{array_diff_method}" do
+      it 'returns [0, 3]' do
+        expect(array1.send(array_diff_method, array2)).to eq([1, 4])
+      end
+  
+      it 'returns [1, 2, 3]' do
+        expect(array1.send(array_diff_method, array15)).to eq([2, 3, 4])
+      end
+
+      it 'returns [0, 2]' do
+        expect(array1.send(array_diff_method, array2a)).to eq([1, 3])
+      end
+
+      it 'returns [0, 1, 2]' do
+        expect(array1.send(array_diff_method, array8)).to eq([1, 2, 3])
+      end
+
+      it 'returns [0, 1, 2, 3]' do
+        expect(array1.send(array_diff_method, array5)).to eq([1, 2, 3, 4])
+      end
+
+      it 'returns []' do
+        expect(array4.send(array_diff_method, array5)).to eq([])
+      end
+
+      it 'returns [0, 1, 2, 3] for nil array' do
+        expect(array1.send(array_diff_method, array6)).to eq([1, 2, 3, 4])
       end
     end
   end
