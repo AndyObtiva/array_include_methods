@@ -98,18 +98,20 @@ module ArrayIncludeMethods
     end
     alias array_difference array_diff
     
-    def duplicates
-      the_duplicates = dup
-      unique_self = uniq
-      shift = 0
-      each_with_index do |element, index|
-        if unique_self.include?(element)
-          unique_self.delete(element)
-          the_duplicates.delete_at(index + shift)
-          shift -= 1
-        end
+    # Returns a hash of counts of every element in the array,
+    # performed in linear time (running time of O(n))
+    def counts
+      inject({}) do |count_hash, element|
+        count_hash[element] ||= 0
+        count_hash[element] += 1
+        count_hash
       end
-      the_duplicates.uniq
+    end
+    
+    # Returns a single occurrence of all elements that repeated in an array,
+    # performed in linear time (running time of O(n)).
+    def duplicates
+      counts.select { |element, count| count > 1 }.keys
     end
     
     private

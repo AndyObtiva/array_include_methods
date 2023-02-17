@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/AndyObtiva/array_include_methods.svg?branch=master)](https://travis-ci.com/AndyObtiva/array_include_methods)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/array_include_methods/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/array_include_methods?branch=master)
 
-`Array#include_all?`, `Array#include_any?`, `Array#include_array?`, `Array#array_index`, and `Array#duplicates` methods missing from basic Ruby `Array` API.
+`Array#include_all?`, `Array#include_any?`, `Array#include_array?`, `Array#array_index`, `Array#counts`, and `Array#duplicates` methods missing from basic Ruby `Array` API.
 
 ## Setup
 
@@ -128,9 +128,23 @@ Returns indexes from `self` array for which elements do not match elements in `o
 [1, 2, 3, 4].array_diff_indexes(nil) # returns [0, 1, 2, 3]
 ```
 
+### `Array#counts`
+
+Returns a hash of counts of every element in the array,
+performed in linear time (running time of O(n)).
+
+```ruby
+[1, 2, 3, 4].counts # returns {1=>1, 2=>1, 3=>1, 4=>1}
+[1, :a, :a, :b, 'bee', 'see', true, true, nil, nil].counts # returns {1=>1, :a=>2, :b=>1, "bee"=>1, "see"=>1, true=>2, nil=>2}
+[1, :a, :a, :b, 'bee', 'see', true, true, nil].counts # {1=>1, :a=>2, :b=>1, "bee"=>1, "see"=>1, true=>2, nil=>1}
+[1, {a: 1}, :a, :a, :b, 'bee', 'see', true, true, {a: 1}, {a: 1}].counts # {1=>1, {:a=>1}=>3, :a=>2, :b=>1, "bee"=>1, "see"=>1, true=>2}
+[].counts # returns {}
+```
+
 ### `Array#duplicates`
 
-Returns a single occurrence of all elements that repeated in an array
+Returns a single occurrence of all elements that repeated in an array,
+performed in linear time (running time of O(n)).
 
 ```ruby
 [1, 2, 3, 4].duplicates # returns []
