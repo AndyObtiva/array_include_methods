@@ -82,6 +82,10 @@ module ArrayIncludeMethods
     end
     alias array_intersection_indices array_intersection_indexes
     
+    def array_intersection(array)
+      array_intersection_indexes(array).map { |index| self[index] }
+    end
+    
     def array_diff_indexes(array)
       array_intersection_and_diff_indexes(array)[:diff_indexes]
     end

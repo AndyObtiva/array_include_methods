@@ -210,33 +210,66 @@ describe 'ArrayIncludeMethods' do
     end
   end
   
-  describe '#array_intersection_indexes' do
+  
+  %i[array_intersection_indexes array_intersection_indices].each do |array_intersection_indexes_method|
+    describe "##{array_intersection_indexes_method}" do
+      it 'returns [1, 2]' do
+        expect(array1.send(array_intersection_indexes_method, array2)).to eq([1, 2])
+      end
+  
+      it 'returns [0]' do
+        expect(array1.array_intersection_indices(array15)).to eq([0])
+      end
+  
+      it 'returns [1, 3]' do
+        expect(array1.send(array_intersection_indexes_method, array2a)).to eq([1, 3])
+      end
+  
+      it 'returns [3]' do
+        expect(array1.send(array_intersection_indexes_method, array8)).to eq([3])
+      end
+  
+      it 'returns []' do
+        expect(array1.send(array_intersection_indexes_method, array5)).to eq([])
+      end
+  
+      it 'returns []' do
+        expect(array4.send(array_intersection_indexes_method, array5)).to eq([])
+      end
+  
+      it 'returns [] for nil array' do
+        expect(array1.send(array_intersection_indexes_method, array6)).to eq([])
+      end
+    end
+  end
+  
+  describe '#array_intersection' do
     it 'returns [1, 2]' do
-      expect(array1.array_intersection_indexes(array2)).to eq([1, 2])
+      expect(array1.array_intersection(array2)).to eq([2, 3])
     end
 
     it 'returns [0]' do
-      expect(array1.array_intersection_indices(array15)).to eq([0])
+      expect(array1.array_intersection(array15)).to eq([1])
     end
 
     it 'returns [1, 3]' do
-      expect(array1.array_intersection_indexes(array2a)).to eq([1, 3])
+      expect(array1.array_intersection(array2a)).to eq([2, 4])
     end
 
     it 'returns [3]' do
-      expect(array1.array_intersection_indexes(array8)).to eq([3])
+      expect(array1.array_intersection(array8)).to eq([4])
     end
 
     it 'returns []' do
-      expect(array1.array_intersection_indexes(array5)).to eq([])
+      expect(array1.array_intersection(array5)).to eq([])
     end
 
     it 'returns []' do
-      expect(array4.array_intersection_indexes(array5)).to eq([])
+      expect(array4.array_intersection(array5)).to eq([])
     end
 
     it 'returns [] for nil array' do
-      expect(array1.array_intersection_indexes(array6)).to eq([])
+      expect(array1.array_intersection(array6)).to eq([])
     end
   end
   
