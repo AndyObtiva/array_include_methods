@@ -21,6 +21,7 @@ describe 'ArrayIncludeMethods' do
   let(:array13) { [1, 2, {a: 3}, {b: 4}, {c: 5}, nil] }
   let(:array14) { [2, {a: 3}, {b: 4}, {c: 5}, nil] }
   let(:array15) { [1] }
+  let(:array16) { [1, {a: 1}, :a, :a, :b, 'bee', 'see', true, true, {a: 1}, {a: 1}] }
   
   describe '#include_all?' do
     it 'returns true if current array includes all elements' do
@@ -302,6 +303,16 @@ describe 'ArrayIncludeMethods' do
       it 'returns [0, 1, 2, 3] for nil array' do
         expect(array1.send(array_diff_indexes_method, array6)).to eq([0, 1, 2, 3])
       end
+  
+      it 'returns TODO for array 11 and 12' do
+        # TODO
+#         expect(array11.send(array_diff_indexes_method, array12)).to eq([8])
+      end
+  
+      it 'returns TODO for array 13 & 14' do
+        # TODO
+#         expect(array13.send(array_diff_indexes_method, array14)).to eq([0])
+      end
     end
   end
   
@@ -334,6 +345,28 @@ describe 'ArrayIncludeMethods' do
       it 'returns [0, 1, 2, 3] for nil array' do
         expect(array1.send(array_diff_method, array6)).to eq([1, 2, 3, 4])
       end
+    end
+  end
+  
+  describe '#duplicates' do
+    it 'returns [] for array1' do
+      expect(array1.duplicates).to eq([])
+    end
+
+    it 'returns duplicates for array11' do
+      expect(array11.duplicates).to eq([:a, true, nil])
+    end
+
+    it 'returns duplicates for array12' do
+      expect(array12.duplicates).to eq([:a, true])
+    end
+
+    it 'returns duplicates for array16' do
+      expect(array16.duplicates).to eq([:a, true, {a: 1}])
+    end
+
+    it 'returns duplicates for empty array' do
+      expect([].duplicates).to eq([])
     end
   end
 end

@@ -2,10 +2,10 @@
 
 ## 1.5.1
 
-- Add `array_difference_indices`/`array_difference_indexes` as aliases for `array_diff_indices`/`array_diff_indexes`
+- `duplicates` returns a single occurrence of all elements that repeated in an array
+- `array_difference_indices`/`array_difference_indexes` aliases for `array_diff_indices`/`array_diff_indexes`
 - `array_diff`/`array_difference` (return elements of `array_diff_indexes`)
 - `array_intersection` (returns elements of `array_intersection_indexes`)
-
 
 ## 1.5.0
 

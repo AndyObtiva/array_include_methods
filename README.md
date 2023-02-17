@@ -1,9 +1,9 @@
-# ArrayIncludeMethods 1.5.0 - Ruby Refinement
+# ArrayIncludeMethods 1.5.1 - [Ruby Refinement](https://docs.ruby-lang.org/en/master/syntax/refinements_rdoc.html)
 [![Gem Version](https://badge.fury.io/rb/array_include_methods.svg)](http://badge.fury.io/rb/array_include_methods)
 [![Build Status](https://travis-ci.com/AndyObtiva/array_include_methods.svg?branch=master)](https://travis-ci.com/AndyObtiva/array_include_methods)
 [![Coverage Status](https://coveralls.io/repos/github/AndyObtiva/array_include_methods/badge.svg?branch=master)](https://coveralls.io/github/AndyObtiva/array_include_methods?branch=master)
 
-`Array#include_all?`, `Array#include_any?`, `Array#include_array?`, `Array#array_index`, `Array#array_diff_indices`, and `Array#array_intersection_indices` methods missing from basic Ruby `Array` API.
+`Array#include_all?`, `Array#include_any?`, `Array#include_array?`, `Array#array_index`, and `Array#duplicates` methods missing from basic Ruby `Array` API.
 
 ## Setup
 
@@ -12,7 +12,7 @@
 Include the following in Gemfile:
 
 ```ruby
-gem 'array_include_methods', '~> 1.5.0'
+gem 'array_include_methods', '~> 1.5.1'
 ```
 
 Run:
@@ -26,7 +26,7 @@ bundle
 Run:
 
 ```
-gem install array_include_methods -v1.5.0
+gem install array_include_methods -v1.5.1
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ Add the following line to your application if you are not requiring all gems via
 require 'array_include_methods'
 ```
 
-To activate the `ArrayIncludeMethods` Ruby Refinement for the `Array` class, add the following line to every Ruby file that needs it:
+To activate the `ArrayIncludeMethods` [Ruby Refinement](https://docs.ruby-lang.org/en/master/syntax/refinements_rdoc.html) for the `Array` class, add the following line to every Ruby file that needs it:
 
 ```ruby
 using ArrayIncludeMethods
@@ -128,17 +128,29 @@ Returns indexes from `self` array for which elements do not match elements in `o
 [1, 2, 3, 4].array_diff_indexes(nil) # returns [0, 1, 2, 3]
 ```
 
+### `Array#duplicates`
+
+Returns a single occurrence of all elements that repeated in an array
+
+```ruby
+[1, 2, 3, 4].duplicates # returns []
+[1, :a, :a, :b, 'bee', 'see', true, true, nil, nil].duplicates # returns [:a, true, nil]
+[1, :a, :a, :b, 'bee', 'see', true, true, nil].duplicates # returns [:a, true]
+[1, {a: 1}, :a, :a, :b, 'bee', 'see', true, true, {a: 1}, {a: 1}].duplicates # returns [:a, true, {a: 1}]
+[].duplicates # returns []
+```
+
 ## JRuby Compatibility
 
 This gem is 100% compatible with JRuby.
 
 ## Opal Compatibility
 
-This gem degrades gracefully to monkey-patching in [Opal Ruby](https://opalrb.com) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement.
+This gem degrades gracefully to monkey-patching in [Opal Ruby](https://opalrb.com) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the [Ruby refinement](https://docs.ruby-lang.org/en/master/syntax/refinements_rdoc.html).
 
 ## RubyMotion Compatibility
 
-This gem degrades gracefully to monkey-patching in [RubyMotion](http://www.rubymotion.com/) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the Ruby refinement.
+This gem degrades gracefully to monkey-patching in [RubyMotion](http://www.rubymotion.com/) and provides a `using` method shim so consumer code does not have to change if it used gems that rely on the [Ruby refinement](https://docs.ruby-lang.org/en/master/syntax/refinements_rdoc.html).
 
 ## TODO
 

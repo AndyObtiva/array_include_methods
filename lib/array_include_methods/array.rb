@@ -98,6 +98,20 @@ module ArrayIncludeMethods
     end
     alias array_difference array_diff
     
+    def duplicates
+      the_duplicates = dup
+      unique_self = uniq
+      shift = 0
+      each_with_index do |element, index|
+        if unique_self.include?(element)
+          unique_self.delete(element)
+          the_duplicates.delete_at(index + shift)
+          shift -= 1
+        end
+      end
+      the_duplicates.uniq
+    end
+    
     private
     
     def array_intersection_and_diff_indexes(array)
