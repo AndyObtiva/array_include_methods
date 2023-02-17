@@ -2,6 +2,7 @@
 
 ## 1.5.1
 
+- `counts` returns a hash of counts of every element in the array, performed in linear time (running time of O(n)).
 - `duplicates` returns a single occurrence of all elements that repeated in an array
 - `array_difference_indices`/`array_difference_indexes` aliases for `array_diff_indices`/`array_diff_indexes`
 - `array_diff`/`array_difference` (return elements of `array_diff_indexes`)

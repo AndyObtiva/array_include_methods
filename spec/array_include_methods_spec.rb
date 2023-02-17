@@ -362,7 +362,7 @@ describe 'ArrayIncludeMethods' do
     end
 
     it 'returns duplicates for array16' do
-      expect(array16.duplicates).to eq([:a, true, {a: 1}])
+      expect(array16.duplicates).to eq([{a: 1}, :a, true])
     end
 
     it 'returns duplicates for empty array' do

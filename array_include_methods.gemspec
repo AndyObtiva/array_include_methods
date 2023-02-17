@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib".freeze]
   s.authors = ["Andy Maleh".freeze]
   s.date = "2023-02-17"
-  s.description = "Array#include_all?, Array#include_any?, Array#include_array?, Array#array_index, and Array#duplicates methods missing from basic Ruby Array API. Compatible with Ruby, JRuby, Opal, and RubyMotion.".freeze
+  s.description = "Array#include_all?, Array#include_any?, Array#include_array?, Array#array_index, Array#counts, and Array#duplicates methods missing from basic Ruby Array API. Compatible with Ruby, JRuby, Opal, and RubyMotion.".freeze
   s.email = "andy.am@gmail.com".freeze
   s.extra_rdoc_files = [
     "CHANGELOG.md",
